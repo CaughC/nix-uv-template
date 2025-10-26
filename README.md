@@ -13,19 +13,73 @@ bash install_setup.sh
 ```
 
 ## 🌍️ グローバルセットアップ
+ここでいうglobalとは、単一ユーザがどのディレクトリ配下でもcommand実行可能な状態をさします。
 ```bash
 bash install_global_nixuv.sh 
-chmod +x ~/.nixuv-template/nixuv
-mkdir -p ~/bin
-ln -s ~/.nixuv-template/nixuv ~/bin/nixuv
 export PATH="$HOME/.nixuv-template:$PATH"
 # ~/.bashrc や ~/.zshrc に追記すると永続化
 ```
 
 ## 🧩 新しいプロジェクトを作る
-
-```
+```bash
 nixuv init name=my_project
 cd my_project
 direnv allow
+```
+
+## Memo
+- Nix標準のインストーラーは/nix（システム全体インストール用ディレクトリ）を作ろうとする。(--no-daemonをつけたり、NIX_INSTALLER_NO_SUDOの環境変数を設定しても。)　ということで、本shellscriptではPortable Nixを採用。
+
+- Nix Portable : https://github.com/DavHau/nix-portable
+
+## 各Packageの更新方法
+- Nix Portable
+```bash
+# 現在の nix-portable を置き換えるだけ
+cd $HOME/.local/bin
+curl -L https://github.com/DavHau/nix-portable/releases/latest/download/nix-portable-$(uname -m) -o nix-portable
+chmod +x nix-portable
+```
+
+- direnv
+```bash
+# 公式インストールスクリプトを再実行
+curl -LsSf https://direnv.net/install.sh | bash
+```
+
+- uv
+```bash
+# uv 公式スクリプトで再インストール
+curl -LsSf https://astral.sh/uv/install.sh | sh
+```
+
+## 本機能が不要になった場合のたたみ方
+- Nix Portable
+```bash
+rm -f $HOME/.local/bin/nix-portable
+rm -f $HOME/.local/bin/nix  # シンボリックリンクも削除
+```
+
+- direnv
+```bash
+# 公式スクリプトでインストールしたバイナリを削除
+rm -f $HOME/.local/bin/direnv
+```
+
+- uv
+```bash
+# uv のユーザー単位インストールを削除
+rm -rf $HOME/.uv
+rm -f $HOME/.local/bin/uv
+```
+
+- global template
+```bash
+rm -rf $HOME/.nixuv-template
+```
+
+- Revert PATH setting
+```bash
+# ~/.bashrc または ~/.zshrc に追加した PATH 行を削除
+# 例: export PATH="$HOME/.nixuv-template:$HOME/.local/bin:$PATH"
 ```

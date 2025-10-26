@@ -1,0 +1,8 @@
+[project]
+name = "example"
+version = "0.1.0"
+description = "(Default Description) Template project using Nix + uv + direnv"
+requires-python = ">=3.12"
+
+[tool.uv]
+dev-dependencies = ["pytest"]

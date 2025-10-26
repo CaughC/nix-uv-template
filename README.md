@@ -20,6 +20,16 @@ export PATH="$HOME/.nixuv-template:$PATH"
 # ~/.bashrc や ~/.zshrc に追記すると永続化
 ```
 
+## 作成されるディレクトリ構成
+```
+$HOME/.nixuv-template/
+├── nixuv          # 新規プロジェクト作成コマンド
+└── template/      # global template
+    ├── flake.nix
+    ├── .envrc
+    └── pyproject.toml
+```
+
 ## 🧩 新しいプロジェクトを作る
 ```bash
 nixuv init name=my_project

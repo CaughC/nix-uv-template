@@ -15,7 +15,7 @@ if [ ! -d "./template_files" ]; then
     echo "❌ template_files/ ディレクトリが存在しません"
     exit 1
 fi
-cp -r ./template_files/* "$TEMPLATE_DIR/"
+cp -r ./template_files/. "$TEMPLATE_DIR/"
 
 # --- 3. nix-portable インストール ---
 if ! command -v nix &> /dev/null; then

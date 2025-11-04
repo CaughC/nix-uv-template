@@ -4,17 +4,11 @@
 
 ---
 
-## 🚀 セットアップ
-
-```bash
-git clone <your_repo> nix-uv-template
-cd nix-uv-template
-bash install_setup.sh
-```
-
 ## 🌍️ グローバルセットアップ
 ここでいうglobalとは、単一ユーザがどのディレクトリ配下でもcommand実行可能な状態をさします。
 ```bash
+git clone git@github.com:CaughC/nix-uv-template.git
+cd nix-uv-template
 bash install_global_nixuv.sh 
 export PATH="$HOME/.nixuv-template:$PATH"
 # ~/.bashrc や ~/.zshrc に追記すると永続化

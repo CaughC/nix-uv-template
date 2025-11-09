@@ -87,3 +87,10 @@ rm -rf $HOME/.nixuv-template
 # ~/.bashrc または ~/.zshrc に追加した PATH 行を削除
 # 例: export PATH="$HOME/.nixuv-template:$HOME/.local/bin:$PATH"
 ```
+
+### Note
+Nix portableの仕様か、windows上での動作が不安定。
+```
+PRootは、ptrace()というLinuxカーネルのシステムコール（他のプロセスをトレース・操作する機能）を多用して動作します。しかし、WSL（特にWSL 1）では、このptrace()の実装が完全ではない、または通常のLinuxとは異なる振る舞いをすることが知られています。これにより、PRootが意図した通りに動作しない、あるいはエラーが発生することがあります。
+```
+これは、export NP_RUNTIME=prootとしたときに発生する。wslではこれをつけないこと。（linuxでも必要ないかも？）

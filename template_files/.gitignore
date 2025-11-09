@@ -1,0 +1,10 @@
+# Python virtual environment
+.venv/
+
+# direnv
+.direnv/
+
+# Python build artifacts
+build/
+dist/
+*.egg-info/

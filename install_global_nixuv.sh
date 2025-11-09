@@ -92,6 +92,7 @@ echo ""
 echo "✅ User-local global template and nixuv command installed!"
 echo "👉 Add the following line to your shell config (~/.bashrc or ~/.zshrc):"
 echo 'export PATH="$HOME/.nixuv-template:$HOME/.local/bin:$PATH"'
+echo 'eval "$(direnv hook bash)"'
 echo "Then run 'source ~/.bashrc' (or 'source ~/.zshrc')"
 echo ""
 echo "Next, create a new project with:"

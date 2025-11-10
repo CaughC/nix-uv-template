@@ -4,8 +4,8 @@ version = "0.1.0"
 description = "(Default Description) Template project using Nix Portable+ uv + direnv"
 requires-python = ">=3.12"
 
-[tool.uv]
-dev-dependencies = [
+[dependency-groups]
+dev = [
     "pytest",
     "ruff>=0.14.4",
 ]

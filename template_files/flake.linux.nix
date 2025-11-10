@@ -23,6 +23,7 @@
         devShell = pkgs.mkShell {
           buildInputs = [
             pkgs.direnv
+            pkgs.ffmpeg
             pkgs.uv
             pythonEnv
           ];
